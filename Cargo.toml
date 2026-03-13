@@ -1,0 +1,25 @@
+[package]
+name = "infinitegfx-core"
+version = "0.1.0"
+edition = "2024"
+authors = ["Fredrik Andersson"]
+description = "A modular, flexible, and shader-based graphics library for Rust, built on wgpu."
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Na1w/infinitegfx"
+documentation = "https://docs.rs/infinitegfx-core"
+keywords = ["graphics", "wgpu", "shader", "reactive"]
+categories = ["graphics", "rendering", "multimedia"]
+
+[dependencies]
+bytemuck = { version = "1.25.0", features = ["derive"] }
+infinitedsp-core = "1.1.0"
+log = "0.4.29"
+thiserror = "2.0.11"
+wgpu = "28.0.0"
+winit = "0.30.13"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+web-sys = { version = "0.3", features = ["CanvasRenderingContext2d", "Document", "Element", "HtmlCanvasElement", "Window"] }
