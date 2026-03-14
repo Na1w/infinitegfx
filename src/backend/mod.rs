@@ -54,7 +54,8 @@ impl GfxBackend {
             .iter()
             .copied()
             .find(|f| f.is_srgb())
-            .ok_or_else(|| GfxError::IncompatibleSurface("No SRGB format found".into()))?;
+            .or_else(|| caps.formats.first().copied())
+            .ok_or_else(|| GfxError::IncompatibleSurface("No compatible format found".into()))?;
 
         let config = wgpu::SurfaceConfiguration {
             usage: wgpu::TextureUsages::RENDER_ATTACHMENT,
